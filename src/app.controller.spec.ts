@@ -1,4 +1,7 @@
+/* eslint-disable prettier/prettier */
+// eslint-disable-next-line prettier/prettier
 import { Test, TestingModule } from "@nestjs/testing";
+// eslint-disable-next-line prettier/prettier
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 

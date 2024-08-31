@@ -1,4 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+/* eslint-disable prettier/prettier */
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany } from 'typeorm';
+import { Endereco } from './endereco.entity';
+import { Solicitacao } from './solicitacao.entity';
 
 @Entity()
 export class Cliente {
@@ -14,8 +17,11 @@ export class Cliente {
   @Column({ type: 'varchar', length: 20 })
   telefone: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  localidade: string;
+  @OneToOne(() => Endereco, (endereco) => endereco.cliente)
+  endereco: Endereco;
+
+  @OneToMany(() => Solicitacao, solicitacao => solicitacao.cliente)
+  solicitacoes: Solicitacao[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   dataCriacao: Date;

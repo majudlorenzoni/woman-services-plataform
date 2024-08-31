@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  OneToMany,
+} from 'typeorm';
+import { Endereco } from './endereco.entity';
 import { Servico } from './servico.entity';
 
 @Entity()
@@ -15,12 +22,9 @@ export class Servidora {
   @Column({ type: 'varchar', length: 20 })
   telefone: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  localidade: string;
+  @OneToOne(() => Endereco, (endereco) => endereco.servidora)
+  endereco: Endereco;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  dataCriacao: Date;
-
-  @OneToMany(() => Servico, servico => servico.servidora)
+  @OneToMany(() => Servico, (servico) => servico.servidoras)
   servicos: Servico[];
 }

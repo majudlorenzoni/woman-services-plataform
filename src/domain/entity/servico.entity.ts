@@ -1,26 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Servidora } from './servidora.entity';
+import { Solicitacao } from './solicitacao.entity';
+import { ServicoTipo } from './servico-tipo.entity';
 
 @Entity()
 export class Servico {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Servidora, servidora => servidora.servicos)
-  servidora: Servidora;
-
   @Column({ type: 'varchar', length: 100 })
-  tipo: string;
+  nome: string;
 
-  @Column({ type: 'text' })
-  descricao: string;
+  @OneToMany(() => Servidora, (servidora) => servidora.servicos)
+  servidoras: Servidora[];
 
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
-  preco: number;
+  @OneToMany(() => Solicitacao, (solicitacao) => solicitacao.servico)
+  solicitacoes: Solicitacao[];
 
-  @Column({ type: 'varchar', length: 100 })
-  localidade: string;
-
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  dataCriacao: Date;
+  @OneToMany(() => ServicoTipo, (servicoTipo) => servicoTipo.servico)
+  servicoTipos: ServicoTipo[];
 }
