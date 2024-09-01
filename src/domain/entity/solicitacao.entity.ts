@@ -7,10 +7,10 @@ export class Solicitacao {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Cliente, (cliente) => cliente.solicitacoes)
+  @ManyToOne(() => Cliente, cliente => cliente.solicitacoes, { eager: true, onDelete: 'CASCADE' })
   cliente: Cliente;
 
-  @ManyToOne(() => Servico, (servico) => servico.solicitacoes)
+  @ManyToOne(() => Servico, servico => servico.solicitacoes, { eager: true, onDelete: 'CASCADE' })
   servico: Servico;
 
   @Column({ type: 'varchar', length: 100 })
