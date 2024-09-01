@@ -11,12 +11,12 @@ export class Servico {
   @Column({ type: 'varchar', length: 100 })
   nome: string;
 
-  @OneToMany(() => Servidora, (servidora) => servidora.servicos)
+  @OneToMany(() => Servidora, servidora => servidora.servicos)
   servidoras: Servidora[];
 
-  @OneToMany(() => Solicitacao, (solicitacao) => solicitacao.servico)
+  @OneToMany(() => Solicitacao, solicitacao => solicitacao.servico)
   solicitacoes: Solicitacao[];
 
-  @OneToMany(() => ServicoTipo, (servicoTipo) => servicoTipo.servico)
+  @OneToMany(() => ServicoTipo, servicoTipo => servicoTipo.servico)
   servicoTipos: ServicoTipo[];
 }

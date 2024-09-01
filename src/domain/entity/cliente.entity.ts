@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany } from 'typeorm';
-import { Endereco } from './endereco.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Solicitacao } from './solicitacao.entity';
 
 @Entity()
@@ -17,12 +15,24 @@ export class Cliente {
   @Column({ type: 'varchar', length: 20 })
   telefone: string;
 
-  @OneToOne(() => Endereco, (endereco) => endereco.cliente)
-  endereco: Endereco;
+  @Column({ type: 'varchar', length: 100 })
+  rua: string;
 
-  @OneToMany(() => Solicitacao, solicitacao => solicitacao.cliente)
+  @Column({ type: 'varchar', length: 10 })
+  numero: string;
+
+  @Column({ type: 'varchar', length: 10, nullable: true })
+  complemento?: string;
+
+  @Column({ type: 'varchar', length: 8 })
+  cep: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  cidade: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  estado: string;
+
+  @OneToMany(() => Solicitacao, (solicitacao) => solicitacao.cliente)
   solicitacoes: Solicitacao[];
-
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  dataCriacao: Date;
 }

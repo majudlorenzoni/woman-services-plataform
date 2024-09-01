@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Entity, PrimaryColumn, ManyToOne } from 'typeorm';
 import { Servico } from './servico.entity';
 import { TipoServico } from './tipo-servico.entity';
