@@ -10,6 +10,7 @@ export class ServidoraRepository implements IServidoraRepository {
     private readonly servidoraRepository: Repository<Servidora>,
   ) {}
 
+
   async findAll(): Promise<Servidora[]> {
     return await this.servidoraRepository.find();
   }

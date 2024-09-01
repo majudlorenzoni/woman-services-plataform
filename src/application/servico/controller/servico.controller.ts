@@ -64,10 +64,4 @@ export class ServicoController {
     await this.servicoService.delete(id);
   }
 
-  @Get('tipo/:tipoId')
-  @ApiOperation({ summary: 'Listar serviços por tipo' })
-  @ApiResponse({ status: 200, description: 'Lista de serviços por tipo.', type: [Servico] })
-  async findByTipo(@Param('tipoId') tipoId: number): Promise<Servico[]> {
-    return await this.servicoService.findByTipo(tipoId);
-  }
 }

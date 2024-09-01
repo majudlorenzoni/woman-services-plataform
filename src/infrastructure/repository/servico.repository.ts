@@ -1,8 +1,11 @@
+
+import { Injectable } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Servico } from "src/domain/entity/servico.entity";
 import { IServicoRepository } from "src/domain/interfaces/servico.repository.interface";
 
+@Injectable()
 export class ServicoRepository implements IServicoRepository {
   constructor(
     @InjectRepository(Servico)

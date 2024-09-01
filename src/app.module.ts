@@ -11,7 +11,8 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
 import { ClienteModule } from './domain/modules/cliente.module';
 import { ServidoraModule } from './domain/modules/servidora.module';
 import { ServicoModule } from './domain/modules/servico.module';
-import { ServicoTipoModule } from './domain/modules/servico-tipo.module';
+import { DomainModule } from './domain/domain.module';
+import { SolicitacaoModule } from './domain/modules/solicitacoes.module';
 
 config();
 
@@ -25,10 +26,11 @@ config();
       logging: true,
     }),
     InfrastructureModule,
+    DomainModule,
     ClienteModule,
     ServidoraModule,
     ServicoModule,
-    ServicoTipoModule,
+    SolicitacaoModule,
   ],
   controllers: [],
   providers: [],
