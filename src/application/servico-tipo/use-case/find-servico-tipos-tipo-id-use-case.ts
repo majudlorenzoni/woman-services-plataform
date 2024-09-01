@@ -7,6 +7,6 @@ export class FindServicoTiposByTipoIdUseCase {
   constructor(private readonly servicoTipoRepository: ServicoTipoRepository) {}
 
   async execute(tipoId: number): Promise<ServicoTipo[]> {
-    return this.servicoTipoRepository.findByTipoId(tipoId);
+    return this.servicoTipoRepository.findByTipo(tipoId);
   }
 }

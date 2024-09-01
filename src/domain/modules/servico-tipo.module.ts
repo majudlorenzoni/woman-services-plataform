@@ -17,11 +17,11 @@ import { UpdateServicoTipoUseCase } from 'src/application/servico-tipo/use-case/
     ServicoTipoService,
     ServicoTipoRepository,
     CreateServicoTipoUseCase,
+    UpdateServicoTipoUseCase,
     DeleteServicoTipoUseCase,
     FindAllServicoTiposUseCase,
     FindServicoTiposByTipoIdUseCase,
-    UpdateServicoTipoUseCase,
   ],
-  exports: [ServicoTipoService],
+  exports: [ServicoTipoService, CreateServicoTipoUseCase, UpdateServicoTipoUseCase, FindAllServicoTiposUseCase, FindServicoTiposByTipoIdUseCase, ServicoTipoRepository]
 })
 export class ServicoTipoModule {}

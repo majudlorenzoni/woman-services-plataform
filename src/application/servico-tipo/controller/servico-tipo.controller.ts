@@ -10,23 +10,22 @@ export class ServicoTipoController {
 
   @Get()
   async findAll(): Promise<ServicoTipo[]> {
-    return await this.servicoTipoService.findAll();
+    return this.servicoTipoService.findAll();
+  }
+
+  @Get(':id')
+  async findById(@Param('id') id: number): Promise<ServicoTipo | null> {
+    return this.servicoTipoService.findById(id);
   }
 
   @Post()
-  async create(@Body() createServicoTipoDto: CreateServicoTipoDto): Promise<ServicoTipo> {
-    return await this.servicoTipoService.create(createServicoTipoDto);
+  async create(@Body() createDto: CreateServicoTipoDto): Promise<ServicoTipo> {
+    return this.servicoTipoService.create(createDto);
   }
 
   @Put(':id')
-  async update(@Param('id') id: number, @Body() updateServicoTipoDto: UpdateServicoTipoDto): Promise<ServicoTipo> {
-    return await this.servicoTipoService.update(id, updateServicoTipoDto);
-  }
-
-
-  @Get(':id')
-  async findById(@Param('id') id: number): Promise<ServicoTipo> {
-    return await this.servicoTipoService.findById(id);
+  async update(@Param('id') id: number, @Body() updateDto: UpdateServicoTipoDto): Promise<ServicoTipo> {
+    return this.servicoTipoService.update(id, updateDto);
   }
 
   @Delete(':id')

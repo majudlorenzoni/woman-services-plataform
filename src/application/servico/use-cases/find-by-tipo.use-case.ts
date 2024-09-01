@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Servico } from 'src/domain/entity/servico.entity';
 import { ServicoTipo } from 'src/domain/entity/servico-tipo.entity';
+import { ServicoTipoRepository } from 'src/infrastructure/repository/servico-tipo.repository';
 
 @Injectable()
 export class FindByTipoServicoUseCase {

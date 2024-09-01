@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ServicoTipo } from 'src/domain/entity/servico-tipo.entity';
+import { IServicoTipoRepository } from 'src/domain/interfaces/servico-tipo.interface.repository';
 
 @Injectable()
-export class ServicoTipoRepository {
+export class ServicoTipoRepository implements IServicoTipoRepository {
   constructor(
     @InjectRepository(ServicoTipo)
     private readonly servicoTipoRepository: Repository<ServicoTipo>,
@@ -14,17 +15,9 @@ export class ServicoTipoRepository {
     return this.servicoTipoRepository.find();
   }
 
-  async findByServicoId(servicoId: number): Promise<ServicoTipo[]> {
-    return this.servicoTipoRepository.find({
+  async findById(servicoId: number): Promise<ServicoTipo | null> {
+    return this.servicoTipoRepository.findOne({
       where: { servicoId },
-      relations: ['tipoServico'], 
-    });
-  }
-
-  async findByTipoId(tipoId: number): Promise<ServicoTipo[]> {
-    return this.servicoTipoRepository.find({
-      where: { tipoId },
-      relations: ['servico'], 
     });
   }
 
@@ -38,5 +31,12 @@ export class ServicoTipoRepository {
   
   async delete(servicoId: number, tipoId: number): Promise<void> {
     await this.servicoTipoRepository.delete({ servicoId, tipoId });
+  }
+
+  async findByTipo(tipoId: number): Promise<ServicoTipo[]> {
+    return this.servicoTipoRepository.find({
+      where: { tipoId },
+      relations: ['servico'], 
+    });
   }
 }
