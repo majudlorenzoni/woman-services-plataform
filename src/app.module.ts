@@ -10,6 +10,7 @@ import { Servico } from './domain/entity/servico.entity';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
 import { ClienteModule } from './domain/modules/cliente.module';
 import { ServidoraModule } from './domain/modules/servidora.module';
+import { ServicoModule } from './domain/modules/servico.module';
 
 config();
 
@@ -25,6 +26,7 @@ config();
     InfrastructureModule,
     ClienteModule,
     ServidoraModule,
+    ServicoModule,
   ],
   controllers: [],
   providers: [],

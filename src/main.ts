@@ -5,22 +5,20 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Verifica se o ambiente é de desenvolvimento
-  const isDev = process.env.NODE_ENV !== 'production';
+  const config = new DocumentBuilder()
+    .setTitle('Woman Service API')
+    .setDescription(
+      'Conctando clientes com prestadoras de serviços',
+    )
+    .setVersion('1.0')
+    .addTag('servicos')
+    .build();
 
-  if (isDev) {
-    // Configuração do Swagger apenas em ambientes de desenvolvimento
-    const config = new DocumentBuilder()
-      .setTitle('API')
-      .setDescription('The API description')
-      .setVersion('1.0')
-      .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api', app, document);
-  }
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
-  // Inicia o servidor na porta especificada ou na porta 3000 por padrão
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(3000);
 }
 
 bootstrap();
+
