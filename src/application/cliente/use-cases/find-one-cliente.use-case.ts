@@ -13,7 +13,6 @@ export class FindClienteByIdUseCase {
   async execute(id: number): Promise<Cliente> {
     const cliente = await this.clienteRepository.findOne({
       where: { id },
-      relations: ['endereco'], 
     });
 
     if (!cliente) {

@@ -6,7 +6,7 @@ import { Cliente } from 'src/domain/entity/cliente.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Cliente])],
   providers: [ClienteRepository],
-  exports: [ClienteRepository],
+  exports: [ClienteRepository, TypeOrmModule],
 })
 
 export class InfrastructureModule {}

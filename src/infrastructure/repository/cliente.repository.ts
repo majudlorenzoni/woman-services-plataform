@@ -16,7 +16,6 @@ export class ClienteRepository implements IClienteRepository {
   async findOne(id: number): Promise<Cliente> {
     return await this.clienteRepository.findOne({
       where: { id },
-      relations: ['endereco'],
     });
   }
 

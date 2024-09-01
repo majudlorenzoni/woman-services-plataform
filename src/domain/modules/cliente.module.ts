@@ -28,6 +28,7 @@ import { ClienteController } from 'src/application/cliente/controller/cliente.co
     FindAllClientesUseCase,
     FindClienteByIdUseCase,
     FindClienteByEmailUseCase,
+
   ],
 })
 export class ClienteModule {}
